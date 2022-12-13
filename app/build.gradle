@@ -36,8 +36,8 @@ android {
         applicationId "com.mathewsachin.fategrandautomata"
         minSdkVersion 24
         targetSdkVersion 32
-        versionCode Integer.valueOf(System.env.FGA_VERSION_CODE ?: 1)
-        versionName(System.env.FGA_VERSION_NAME ?: "0.1.0")
+        versionCode Integer.valueOf(System.env.FGA_VERSION_CODE ?: 1908)
+        versionName(System.env.FGA_VERSION_NAME ?: "0.22.2")
 
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86"
