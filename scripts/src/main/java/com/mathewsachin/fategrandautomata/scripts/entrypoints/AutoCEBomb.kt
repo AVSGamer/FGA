@@ -25,6 +25,7 @@ class AutoCEBomb @Inject constructor(
         object NoSuitableTargetCEFound : ExitReason()
     }
 
+    //Declaration of Image Files for CE Search
     private fun imagesForSelectedRarity() = when (prefs.ceBombTargetRarity) {
         1 -> listOf(
             Images.CEStarvationLv1,
@@ -45,20 +46,26 @@ class AutoCEBomb @Inject constructor(
 
     class ExitException(val reason: ExitReason) : Exception()
 
+    //Declaration of function for Base CE Region Selection
     private fun findBaseCE(): Match {
+        //function to find the region to be clicked of Base CE.
         for (img in imagesForSelectedRarity()) {
+            //for each image under selected rarity do the following
             val matches = locations.levelOneCERegion
                 .findAll(images[img])
                 .toList()
                 .sorted()
+            //find all that matches the image in previous comment into a list and sort them.
 
             // At least 2 copies are needed to merge
             if (matches.size > 1) {
                 return matches[0]
+                //return the first match if there are more than one of it as the Base CE Region.
             }
         }
 
         throw ExitException(ExitReason.NoSuitableTargetCEFound)
+        //If Return wasn't called then throw an Exception.
     }
 
     override fun script(): Nothing {

@@ -108,8 +108,9 @@ class Locations @Inject constructor(
     val giftBoxSwipeStart = Location(120, if (canLongSwipe) 1200 else 1050).xFromCenter()
     val giftBoxSwipeEnd = Location(120, if (canLongSwipe) 350 else 575).xFromCenter()
 
-    val ceEnhanceRegion = Region(200, 600, 400, 400)
-    val ceEnhanceClick = Location(200, 600)
+    //CE Enhance Location & Regions
+    val ceEnhanceRegion = Region(if (isWide) 774 else 200, 600, 400, 400)
+    val ceEnhanceClick = Location(if (isWide) 774 else 200, 600)
     val levelOneCERegion = Region(160, 380, 1840, 900)
 
     val npStartedRegion = Region(-400, 500, 800, 400).xFromCenter()
