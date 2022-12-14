@@ -69,42 +69,47 @@ class AutoCEBomb @Inject constructor(
     }
 
     override fun script(): Nothing {
+    //void function or main operations of this feature
         locations.ceEnhanceClick.click()
-
+    //click on Base CE Area to select Base CE
         while (true) {
             2.seconds.wait()
 
             val baseCERegion = findBaseCE().region
+    //call on function above for finding Base CE Region
             val img = baseCERegion.getPattern()
 
             img.use {
                 baseCERegion.click()
                 2.seconds.wait()
 
-                Location(900, 500).click()
+                locations.ceFoddersPreview.click()
                 2.seconds.wait()
+    //click on Area to Place Fodder CEs in to start selecting Fodder CEs
 
                 // Picking the matching CE later allows more CE to be picked
                 pickCEs()
                 pickMatchingCE(img)
 
                 repeat(2) {
-                    Location(2300, 1300).click()
+                    locations.ceEnhanceButton.click()
                     1.seconds.wait()
                 }
 
-                Location(1600, 1200).click()
+                locations.ceEnhanceConfirmButton.click()
                 1.seconds.wait()
 
-                Location(2000, 1000).click(70)
+                Location(2000, 1000).click(130)
                 locations.ceEnhanceClick.click()
+                2.seconds.wait()
+                locations.scrollToTop.click()
             }
         }
     }
 
     private fun pickMatchingCE(img: Pattern) {
         // Scroll to top
-        Location(2040, 400).click()
+        locations.scrollToTop.click()
         2.seconds.wait()
 
         val matchingCE = locations.levelOneCERegion.find(img)
@@ -116,12 +121,12 @@ class AutoCEBomb @Inject constructor(
 
     private fun pickCEs() {
         // Scroll to bottom
-        Location(2040, 1400).click()
+        locations.scrollToBottom.click()
         1.seconds.wait()
 
         for (y in 0..3) {
             for (x in 0..6) {
-                Location(1900 - 270 * x, 1300 - 290 * y).click()
+                Location((if (locations.wideScreenBoolean) 2120 else 1900) - 270 * x, 1300 - 290 * y).click()
             }
         }
     }

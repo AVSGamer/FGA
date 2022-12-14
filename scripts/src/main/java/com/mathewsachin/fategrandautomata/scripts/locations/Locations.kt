@@ -111,7 +111,13 @@ class Locations @Inject constructor(
     //CE Enhance Location & Regions
     val ceEnhanceRegion = Region(if (isWide) 436 else 200, 600, 400, 400)
     val ceEnhanceClick = Location(if (isWide) 436 else 200, 600)
-    val levelOneCERegion = Region(160, 380, 1840, 900)
+    val levelOneCERegion = Region(if (isWide) 400 else 160, 380, 1840, 1008)
+    val ceFoddersPreview = Location(if (isWide) 1100 else 900, 500)
+    val scrollToBottom = Location(if (isWide) 2350 else 2040, 1400)
+    val scrollToTop = Location(if (isWide) 2350 else 2040,  400)
+    val wideScreenBoolean = isWide
+    val ceEnhanceButton = Location(if (isWide) 2640 else 2300, 1300)
+    val ceEnhanceConfirmButton = Location(if (isWide) 1920 else 1600, 1200)
 
     val npStartedRegion = Region(-400, 500, 800, 400).xFromCenter()
 }
